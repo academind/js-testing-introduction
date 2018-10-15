@@ -1,4 +1,4 @@
-import { fetchData } from './http';
+const { fetchData } = require('./http');
 
 const button = document.querySelector('button');
 
@@ -17,3 +17,5 @@ const printTitle = () => {
 };
 
 button.addEventListener('click', printTitle);
+
+exports.printTitle = printTitle;
