@@ -1,32 +1,21 @@
-const { generateText, createElement, validateInput } = require('./util');
+import axios from 'axios';
 
-const initApp = () => {
-  // Initializes the app, registers the button click listener
-  const newUserButton = document.querySelector('#btnAddUser');
-  newUserButton.addEventListener('click', addUser);
+const button = document.querySelector('button');
+
+export const fetchData = () => {
+  return axios
+    .get('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => {
+      const title = response.data.title;
+      const transformedTitle = title.toUpperCase();
+      return transformedTitle;
+    });
 };
 
-const addUser = () => {
-  // Fetches the user input, creates a new HTML element based on it
-  // and appends the element to the DOM
-  const newUserNameInput = document.querySelector('input#name');
-  const newUserAgeInput = document.querySelector('input#age');
-
-  if (
-    !validateInput(newUserNameInput.value, true, false) ||
-    !validateInput(newUserAgeInput.value, false, true)
-  ) {
-    return;
-  }
-
-  const userList = document.querySelector('.user-list');
-  const outputText = generateText(
-    newUserNameInput.value,
-    newUserAgeInput.value
-  );
-  const element = createElement('li', outputText, 'user-item');
-  userList.appendChild(element);
+const loadTitle = () => {
+  fetchData().then(title => {
+    console.log(title);
+  });
 };
 
-// Start the app!
-initApp();
+button.addEventListener('click', loadTitle);
