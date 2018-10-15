@@ -90,11 +90,10 @@
 /*!****************!*\
   !*** ./app.js ***!
   \****************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./http */ \"./http.js\");\n\n\nconst button = document.querySelector('button');\n\nconst loadTitle = () => {\n  return Object(_http__WEBPACK_IMPORTED_MODULE_0__[\"fetchData\"])().then(extractedData => {\n    const title = extractedData.title;\n    const transformedTitle = title.toUpperCase();\n    return transformedTitle;\n  });\n};\n\nconst printTitle = () => {\n  loadTitle().then(title => {\n    console.log(title);\n  });\n};\n\nbutton.addEventListener('click', printTitle);\n\n\n//# sourceURL=webpack:///./app.js?");
+eval("const { fetchData } = __webpack_require__(/*! ./http */ \"./http.js\");\n\nconst button = document.querySelector('button');\n\nconst loadTitle = () => {\n  return fetchData().then(extractedData => {\n    const title = extractedData.title;\n    const transformedTitle = title.toUpperCase();\n    return transformedTitle;\n  });\n};\n\nconst printTitle = () => {\n  loadTitle().then(title => {\n    console.log(title);\n  });\n};\n\nbutton.addEventListener('click', printTitle);\n\nexports.printTitle = printTitle;\n\n\n//# sourceURL=webpack:///./app.js?");
 
 /***/ }),
 
@@ -102,11 +101,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _htt
 /*!*****************!*\
   !*** ./http.js ***!
   \*****************/
-/*! exports provided: fetchData */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"fetchData\", function() { return fetchData; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst fetchData = () => {\n  return axios__WEBPACK_IMPORTED_MODULE_0___default.a\n    .get('https://jsonplaceholder.typicode.com/todos/1')\n    .then(response => {\n      return response.data;\n    });\n};\n\n\n//# sourceURL=webpack:///./http.js?");
+eval("const axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nconst fetchData = () => {\n  return axios\n    .get('https://jsonplaceholder.typicode.com/todos/1')\n    .then(response => {\n      return response.data;\n    });\n};\n\nexports.fetchData = fetchData;\n\n\n//# sourceURL=webpack:///./http.js?");
 
 /***/ }),
 
